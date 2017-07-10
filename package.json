@@ -1,0 +1,22 @@
+{
+  "name": "intern_typescript_v2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "ui": "./node_modules/.bin/intern-runner config=build/tests/intern \"suites=\"",
+    "api": "./node_modules/.bin/intern-client config=build/tests/intern"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "intern": "^3.4.5",
+    "request": "^2.81.0",
+    "request-promise": "^4.2.1"
+  },
+  "devDependencies": {
+    "@types/request-promise": "^4.1.35"
+  }
+}
