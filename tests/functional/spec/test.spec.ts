@@ -7,14 +7,12 @@ const suite: Object = {
     name: 'create typescript test',
 
     setup(this: Test) {
-        Intern.setBrowser(this.remote);
+        Intern.setBrowser(this);
     },
 
 
-    async "inter js page"(this: Test) {
-        await Intern.navigate();
-        let internLogo = await Intern.internLogo;
-        assert.equal(internLogo, "Intern.", "Cant find intern logo")
+    async "intern js page"(this: Test) {
+        await Intern.go();
         return this.remote;
     }
 };

@@ -1,24 +1,16 @@
 import Command = require('leadfoot/Command');
+import * as Test from 'intern/lib/Test';
 import * as config from "../../config/config";
-import { Selector } from "./model";
+import { Selector, STRATEGIES } from "./model";
 // let config = require("../../config/config")
 
-const STRATEGIES = [
-    'class name',
-    'css selector',
-    'id',
-    'name',
-    'link text',
-    'partial link text',
-    'tag name',
-    'xpath'
-];
+console.log(STRATEGIES.PARTIAL_LINK_TEXT)
 
 export abstract class Base {
     static browser: Command<void>;
 
-    static async setBrowser(remote: Command<void>) {
-        this.browser = remote;
+    static async setBrowser(remote: Test) {
+        this.browser = remote.remote;
         await this.browser
             .maximizeWindow()
             .setFindTimeout(10000)
