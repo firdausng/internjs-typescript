@@ -13,7 +13,9 @@ const suite: Object = {
 
     async "intern js page"(this: Test) {
         await Intern.go();
-        return this.remote;
+        await Intern.clickLeftMenu();
+        await Intern.browser.sleep(10000)
+        return Intern.browser;
     }
 };
 

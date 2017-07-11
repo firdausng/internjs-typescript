@@ -1,19 +1,19 @@
 import Command = require('leadfoot/Command');
 import * as Test from 'intern/lib/Test';
-import * as config from "../../config/config";
-import { Selector, STRATEGIES } from "./model";
-// let config = require("../../config/config")
 
-console.log(STRATEGIES.PARTIAL_LINK_TEXT)
+// import * as config from "../../config/config";
+import {env, find_timeout} from "../../config/config";
+
+import { Selector, STRATEGIES } from "./model";
 
 export abstract class Base {
     static browser: Command<void>;
 
-    static async setBrowser(remote: Test) {
-        this.browser = remote.remote;
+    static async setBrowser(test: Test) {
+        this.browser = test.remote;
         await this.browser
             .maximizeWindow()
-            .setFindTimeout(10000)
+            .setFindTimeout(find_timeout)
 
     }
 
@@ -21,11 +21,8 @@ export abstract class Base {
         return this.browser;
     }
 
-    static navigate(url = process.env.HONEY_ENV || config.config.env.ui.prod) {
+    static navigate(url = process.env.HONEY_ENV || env.ui.prod) {
         return this.browser.get(url)
-    }
-    static get internLogo(): Command<string> {
-        return this.browser.findByCssSelector("a.logo").getVisibleText();
     }
 
     static click(data: Selector) {
@@ -39,7 +36,7 @@ export abstract class Base {
     }
 
     private static displayInfo(info: Selector) {
-        let msg = "I am doing " + info.action.toUpperCase() + " action with this information \n";
+        let msg = "I am doing " + info.action!.toUpperCase() + " action with this information \n";
         if (info.type) { msg += "\ttype: " + info.type + "\n"; }
         if (info.value) { msg += "\tvalue: " + info.value + "\n"; }
         if (info.info) { msg += "\tinfo: " + info.info + "\n"; }

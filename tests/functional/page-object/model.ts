@@ -1,13 +1,13 @@
 export interface Selector {
-    type: string,
+    type: STRATEGY,
     value: string,
     info?: string,
-    action: string,
+    action?: ACTION,
     input?: string,
     expected?: string
 }
 
-type STRATEGY =
+export type STRATEGY =
     "class name" |
     "css selector" |
     "id" |
@@ -16,7 +16,6 @@ type STRATEGY =
     "partial link text" |
     "tag name" |
     "xpath";
-
 
 export const STRATEGIES = {
     CLASS: 'class name' as STRATEGY,
@@ -29,13 +28,11 @@ export const STRATEGIES = {
     XPATH: 'xpath' as STRATEGY
 };
 
-// export enum STRATEGIES {
-//     CLASS = 'class name',
-//     CSS = 'css selector',
-//     ID = 'id',
-//     NAME = 'name',
-//     LINK_TEXT = 'link text',
-//     PARTIAL_LINK_TEXT = 'partial link text',
-//     TAG = 'tag name',
-//     XPATH = 'xpath'
-// }
+export type ACTION =
+    "click" | "type" | "hover";
+
+export const ACTIONS = {
+    CLICK: "click" as ACTION,
+    TYPE: "type" as ACTION,
+    HOVER: "hover" as ACTION,
+}
