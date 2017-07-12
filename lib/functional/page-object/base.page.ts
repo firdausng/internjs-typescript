@@ -2,7 +2,7 @@ import Command = require('leadfoot/Command');
 import * as Test from 'intern/lib/Test';
 
 // import * as config from "../../config/config";
-import {env, find_timeout} from "../../config/config";
+import {env, find_timeout} from "../../../config/config";
 
 import { Selector, STRATEGIES } from "./model";
 

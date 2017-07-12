@@ -1,13 +1,12 @@
 import * as registerSuite from 'intern!object';
 import * as assert from 'intern/chai!assert';
 import * as Test from 'intern/lib/Test';
-import { ApiRunner } from "../lib/api.runner";
+import { ApiRunner } from "../../../lib/api/api.runner";
 
 const suite: Object = {
     name: 'create typescript API test',
 
     setup: function (this: Test) {
-        // base = new Base(this.remote);
     },
 
 

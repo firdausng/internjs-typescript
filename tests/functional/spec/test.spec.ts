@@ -1,7 +1,7 @@
 import * as registerSuite from 'intern!object';
 import * as assert from 'intern/chai!assert';
 import * as Test from 'intern/lib/Test';
-import { Intern } from "../page-object/internjs.page";
+import { Intern } from "../../../lib/functional/page-object/internjs/internjs.page";
 
 const suite: Object = {
     name: 'create typescript test',
@@ -14,7 +14,7 @@ const suite: Object = {
     async "intern js page"(this: Test) {
         await Intern.go();
         await Intern.clickLeftMenu();
-        await Intern.browser.sleep(10000)
+        // await Intern.browser.sleep(10000)
         return Intern.browser;
     }
 };
