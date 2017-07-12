@@ -9,12 +9,25 @@ const suite: Object = {
     setup: function (this: Test) {
     },
 
+    async "API GET"(this: Test) {
+        let response = await ApiRunner.get({
+            uri: "https://jsonplaceholder.typicode.com/posts/1",
+        });
+        console.log(response.body);
+        return ApiRunner;
+    },
 
-    async "API Test"(this: Test) {
-        
-        await ApiRunner.get({
-            uri: "https://jsonplaceholder.typicode.com/posts/1"
+    async "API POST"(this: Test) {
+        // this.skip();
+        let response = await ApiRunner.post({
+            uri: "http://jsonplaceholder.typicode.com/posts",
+            body: {
+                title: 'foo',
+                body: 'bar',
+                userId: 1
+            }
         })
+        console.log(response.body);
         return ApiRunner;
     }
 };

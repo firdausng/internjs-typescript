@@ -2,7 +2,7 @@ import Command = require('leadfoot/Command');
 import * as assert from 'intern/chai!assert';
 
 import { Base } from "../base.page";
-import { STRATEGIES } from "../model";
+import { STRATEGIES } from "../../../model/functional";
 
 import {Selectors} from "./internjs.data"
 

@@ -29,10 +29,13 @@ export const STRATEGIES = {
 };
 
 export type ACTION =
-    "click" | "type" | "hover";
+    "click" | "type" | "hover" | "navigate" | "typing"| "verify";
 
 export const ACTIONS = {
     CLICK: "click" as ACTION,
     TYPE: "type" as ACTION,
     HOVER: "hover" as ACTION,
+    NAVIGATE: "navigate" as ACTION,
+    TYPING: "typing" as ACTION,
+    VERIFY: "verify" as ACTION
 }

@@ -7,3 +7,7 @@ declare module 'intern/dojo/node!request-promise' {
 	import request = require('request-promise');
 	export = request;
 }
+
+declare interface ObjectConstructor {
+    assign(target: any, ...sources: any[]): any;
+}
