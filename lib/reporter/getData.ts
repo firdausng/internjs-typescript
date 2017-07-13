@@ -6,7 +6,10 @@ define(function (require) {
     // console.log(networkInterfaces);
 
     var ip = require("intern/dojo/node!ip");
-    console.log( ip.address() );
+    var fs = require("intern/dojo/node!fs");
+    // console.log(ip.address());
+
+    let startRun: any;
 
     function getData(config: any) {
         config = config || {};
@@ -15,10 +18,28 @@ define(function (require) {
 
     getData.prototype = {
         runEnd(executor: any) {
-            let results = JSON.stringify(executor.suites);
+            let results: any = JSON.stringify(executor.suites);
             results = JSON.parse(results);
-            results = results.map(result => Object.assign({ip:ip.address(), timestamp:Date.now()}, result))
-            console.log(JSON.stringify(results))
+            let addInfo = {
+                ip: ip.address(),
+                startRun: startRun,
+                endRun: Date.now()
+            }
+            results.push(addInfo)
+            // results = results.map(result => Object.assign({ ip: ip.address(), timestamp: Date.now() }, result))
+            // console.log(JSON.stringify(results))
+            // require("intern/dojo/node!./report-generator").generate(executor.suites, basePath + "/reports");
+
+            fs.appendFile('result.json', JSON.stringify(results), function (err:any) {
+                if (err) throw err;
+                console.log('Saved!');
+            });
+        },
+
+        runStart(executor: any) {
+            startRun = Date.now();
+            // results = results.map(result => Object.assign({ ip: ip.address(), timestamp: Date.now() }, result))
+            // console.log(JSON.stringify(results))
             // require("intern/dojo/node!./report-generator").generate(executor.suites, basePath + "/reports");
         },
     }

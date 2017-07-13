@@ -1,0 +1,69 @@
+[
+    {
+        "name": "chrome on any platform",
+        "id": "chrome on any platform",
+        "sessionId": "584b4f9e-8068-42e1-bc5e-9e3963e41ede",
+        "hasParent": false,
+        "tests": [
+            {
+                "name": "unit tests",
+                "id": "chrome on any platform - unit tests",
+                "parentId": "chrome on any platform",
+                "sessionId": "584b4f9e-8068-42e1-bc5e-9e3963e41ede",
+                "hasParent": true,
+                "tests": [],
+                "timeElapsed": null,
+                "numTests": 0,
+                "numFailedTests": 0,
+                "numSkippedTests": 0,
+                "error": null
+            },
+            {
+                "name": "create typescript test",
+                "id": "chrome on any platform - create typescript test",
+                "parentId": "chrome on any platform",
+                "sessionId": "584b4f9e-8068-42e1-bc5e-9e3963e41ede",
+                "hasParent": true,
+                "tests": [
+                    {
+                        "name": "intern js page",
+                        "sessionId": "584b4f9e-8068-42e1-bc5e-9e3963e41ede",
+                        "id": "chrome on any platform - create typescript test - intern js page",
+                        "parentId": "chrome on any platform - create typescript test",
+                        "timeout": 180000,
+                        "timeElapsed": 2554,
+                        "hasPassed": true,
+                        "skipped": null,
+                        "error": null
+                    },
+                    {
+                        "name": "intern js compact",
+                        "sessionId": "584b4f9e-8068-42e1-bc5e-9e3963e41ede",
+                        "id": "chrome on any platform - create typescript test - intern js compact",
+                        "parentId": "chrome on any platform - create typescript test",
+                        "timeout": 180000,
+                        "timeElapsed": 525,
+                        "hasPassed": true,
+                        "skipped": null,
+                        "error": null
+                    }
+                ],
+                "timeElapsed": 3087,
+                "numTests": 2,
+                "numFailedTests": 0,
+                "numSkippedTests": 0,
+                "error": null
+            }
+        ],
+        "timeElapsed": 4034,
+        "numTests": 2,
+        "numFailedTests": 0,
+        "numSkippedTests": 0,
+        "error": null
+    },
+    {
+        "ip": "10.136.25.235",
+        "startRun": 1499914222876,
+        "endRun": 1499914237561
+    }
+]
