@@ -51,7 +51,8 @@
     // "emitDecoratorMetadata": true,         /* Enables experimental support for emitting type metadata for decorators. */
   },
   "include": [
-    "./tests/**/*.ts"
+    "./tests/**/*.ts",
+    "./lib/**/*.ts"
   ],
   "files": [
     "./node_modules/intern/typings/intern/intern.d.ts",

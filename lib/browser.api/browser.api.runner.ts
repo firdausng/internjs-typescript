@@ -7,7 +7,7 @@ export class BrowserAPI extends Base {
         // console.log(options)
         return this.browser
             .setExecuteAsyncTimeout(10000)
-            .executeAsync(function (options: RequestOption, callback) {
+            .executeAsync(function (options: RequestOption, callback:any) {
                 let {
                     path,
                     operation,

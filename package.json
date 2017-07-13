@@ -13,6 +13,8 @@
   "license": "ISC",
   "dependencies": {
     "intern": "^3.4.5",
+    "ip": "^1.1.5",
+    "marko": "^4.4.18",
     "request": "^2.81.0",
     "request-promise": "^4.2.1",
     "typescript": "^2.4.1"

@@ -12,10 +12,16 @@ const suite: Object = {
     },
 
     async "intern js page"(this: Test) {
-        // await Intern.go();
         await Intern.navigate();
         let internLogo = await Intern.internLogo;
         assert.equal(internLogo, Selectors.internLogo.expected, "Cant find intern logo");
+        await Intern.clickLeftMenu();
+        // await Intern.browser.sleep(10000)
+        return Intern.browser;
+    },
+
+    async "intern js compact"(this: Test) {
+        await Intern.go();
         await Intern.clickLeftMenu();
         // await Intern.browser.sleep(10000)
         return Intern.browser;

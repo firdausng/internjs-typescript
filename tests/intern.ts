@@ -25,7 +25,9 @@ export const suites = [
 ]
 
 export const reporters = [
-    "Runner"
+    "Runner",
+    // { id: 'build/lib/reporter/mat-html/mat-reporter' },
+    { id: 'build/lib/reporter/getData' },
 ];
 
 export const filterErrorStack = true;
