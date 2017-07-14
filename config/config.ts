@@ -13,3 +13,11 @@ export const api_key = {
 }
 
 export const api_timeout = 5000;
+
+
+export const users = {
+    "test1": {
+        "email": "mbwna.test1@mbww.com",
+        "password": "Get2TheChopp@96"
+    }
+}

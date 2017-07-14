@@ -41,6 +41,7 @@ export abstract class Base {
         data.action = "typing";
         data.input = input;
         this.displayInfo(data);
+        console.log(data)
         return this.browser
             .find(type, value)
             .click()
