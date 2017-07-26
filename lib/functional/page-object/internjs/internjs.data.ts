@@ -1,6 +1,6 @@
-import { STRATEGIES, Selector } from "../../../model/functional";
+import { STRATEGIES, ISelector } from "../../../model/functional";
 
-export const Selectors: { [key: string]: Selector } = {
+export const Selectors: { [key: string]: ISelector } = {
     internLogo: {
         type: STRATEGIES.CSS,
         value: "a.logo",

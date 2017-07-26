@@ -6,26 +6,18 @@ import { Selectors } from "../../../lib/functional/page-object/internjs/internjs
 
 const suite: Object = {
     name: 'create typescript test',
-
     setup(this: Test) {
         Intern.setBrowser(this);
     },
-
-    async "intern js page"(this: Test) {
-        await Intern.navigate();
+    async "intern js page - Procedural/Imperative  style"(this: Test) {
+        await Intern.navigate("https://theintern.github.io/");
         let internLogo = await Intern.internLogo;
         assert.equal(internLogo, Selectors.internLogo.expected, "Cant find intern logo");
-        await Intern.clickLeftMenu();
-        // await Intern.browser.sleep(10000)
-        return Intern.browser;
+        return Intern.clickLeftMenu();
     },
-
-    async "intern js compact"(this: Test) {
+    async "intern js page - Declarative style"(this: Test) {
         await Intern.go();
-        await Intern.clickLeftMenu();
-        // await Intern.browser.sleep(10000)
-        return Intern.browser;
+        return Intern.clickLeftMenu();
     }
 };
-
 registerSuite(suite);

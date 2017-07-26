@@ -1,5 +1,5 @@
 import { OptionsWithUri, get, post, put, patch, del, OptionsWithUrl } from 'intern/dojo/node!request-promise';
-import { api_key, api_timeout } from "../../config/config";
+import { api_timeout } from "../../config/config";
 
 export class ApiRunner {
 

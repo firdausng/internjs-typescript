@@ -1,82 +1,62 @@
 import Command = require('leadfoot/Command');
+import Element = require('leadfoot/Element');
 import * as Test from 'intern/lib/Test';
 import * as assert from 'intern/chai!assert';
-
-// import * as config from "../../config/config";
 import { env, find_timeout } from "../../../config/config";
-
-import { Selector, STRATEGIES } from "../../model/functional";
-
+import { ISelector, STRATEGIES, ACTIONS } from "../../model/functional";
+import { displayData } from "../../utils/logging.utils";
+let browser: Command<void>;
 export abstract class Base {
-    static browser: Command<void>;
-
+    // static browser: Command<void>;
     static async setBrowser(test: Test) {
-        this.browser = test.remote;
-        await this.browser
+        browser = test.remote;
+        await browser
             .maximizeWindow()
             .setFindTimeout(find_timeout)
-
     }
-
     static getBrowser() {
-        return this.browser;
+        return browser;
     }
-
-    static navigate(url = process.env.HONEY_ENV || env.ui.prod) {
-        return this.browser.get(url)
+    static navigate(url = process.env.HONEY_ENV || env.ui.stg) {
+        return browser.get(url)
     }
-
-    static click(data: Selector) {
-        const { type, value, info } = data;
-        data.action = "click";
-        Base.displayInfo(data);
-        return this.browser
-            .findDisplayed(type, value)
+    static find(data: ISelector): Command<Element> {
+        const { type, value } = data;
+        return browser
+            .find(type, value);
+    }
+    @displayData({
+        action: ACTIONS.CLICK
+    })
+    static async click(data: ISelector) {
+        const { type, value } = data;
+        return browser
+            .find(type, value)
             .click()
             .end()
     }
-
-    static keyIn(data: Selector, input: string) {
-        const { type, value, info } = data;
-        data.action = "typing";
+    @displayData({
+        action: ACTIONS.TYPING
+    })
+    static keyIn(data: ISelector, input: string) {
+        const { type, value } = data;
         data.input = input;
-        this.displayInfo(data);
-        console.log(data)
-        return this.browser
+        return browser
             .find(type, value)
             .click()
             .type(input)
             .end()
     }
+    static clearOnePassCookies(env = process.env.APP_ENV || "stg") {
+        if (env != "prod") {
+            return browser.get("https://logindev.interpublic.com/OnePass/MainPage?cmd=login&log=y")
+                .clearCookies()
+                .end()
+        } else {
+            return browser.get("https://login.interpublic.com/OnePass/MainPage?cmd=login&log=y")
+                .clearCookies()
+                .end()
+        }
 
-    static assertValue(data: Selector) {
-        const { type, value, expected } = data;
-        data.action = "verify";
-        this.displayInfo(data);
-        return this.browser
-            .find(type, value)
-            .getVisibleText()
-            .then(text => assert(text === expected, `${text} is not equal to ${expected}`))
-    }
-
-    private static displayInfo(info: Selector) {
-        let msg = "I am doing " + info.action!.toUpperCase() + " action with this information \n";
-        if (info.type) { msg += "\ttype: " + info.type + "\n"; }
-        if (info.value) { msg += "\tvalue: " + info.value + "\n"; }
-        if (info.info) { msg += "\tinfo: " + info.info + "\n"; }
-        if (info.input) { msg += "\tinput data: " + info.input + "\n"; }
-        if (info.expected) { msg += "\texpected data: " + info.expected + "\n"; }
-        msg += "\n";
-        console.log(msg);
-    }
-
-    static createRandomText(number = 5) {
-        let text = "";
-        let possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-
-        for (let i = 0; i < number; i++)
-            text += possible.charAt(Math.floor(Math.random() * possible.length));
-
-        return text;
     }
 }

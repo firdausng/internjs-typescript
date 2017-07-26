@@ -5,7 +5,7 @@ export class BrowserAPI extends Base {
 
     static xhr(options: RequestOption) {
         // console.log(options)
-        return this.browser
+        return this.getBrowser()
             .setExecuteAsyncTimeout(10000)
             .executeAsync(function (options: RequestOption, callback:any) {
                 let {

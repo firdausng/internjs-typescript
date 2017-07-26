@@ -17,8 +17,7 @@ export const tunnelOptions = {
 export const defaultTimeout = 180000;
 
 export const functionalSuites = [
-    'build/tests/functional/spec/intern.spec',
-    'build/tests/functional/spec/lynda.spec'
+    'build/tests/functional/spec/intern.spec'
 ];
 
 export const suites = [

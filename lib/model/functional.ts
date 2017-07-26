@@ -1,4 +1,4 @@
-export interface Selector {
+export interface ISelector {
     type: STRATEGY,
     value: string,
     info?: string,
